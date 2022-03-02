@@ -3,7 +3,7 @@ name: Deploy React app to GKE
 on:
   workflow_run:
     workflows: Frontend unit tests
-    branches: [main]
+    branches: [master]
     types: completed
 
 env:
