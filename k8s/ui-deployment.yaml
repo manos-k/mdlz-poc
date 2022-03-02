@@ -27,6 +27,8 @@ spec:
       containers:
         - image: ui
           name: ui
+          ports:
+            - containerPort: 3000
           resources: {}
           stdin: true
           volumeMounts:

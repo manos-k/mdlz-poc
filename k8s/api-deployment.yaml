@@ -27,6 +27,8 @@ spec:
       containers:
         - image: api
           name: api
+          ports:
+            - containerPort: 8000
           resources: {}
           volumeMounts:
             - mountPath: /app
