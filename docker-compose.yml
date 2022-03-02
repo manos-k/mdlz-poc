@@ -1,14 +1,5 @@
 version: '3'
 services:
-  nginx:
-    depends_on:
-      - api
-      - ui
-    restart: always
-    build:
-      context: ./nginx
-    ports:
-      - "3001:80"
   ui:
     stdin_open: true
     build:
@@ -16,8 +7,12 @@ services:
     volumes:
       - /app/node_modules
       - ./test-api-calls:/app
+    ports:
+      - "3000:3000"
   api:
     build:
       context: ./fast-api
     volumes:
       - ./fast-api:/app
+    ports:
+      - "8000:8000"  
