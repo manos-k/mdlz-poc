@@ -61,6 +61,6 @@ jobs:
     - name: Deploy
       run: |-
         kubectl apply -f k8s/
-        kubectl set image deployments/api server=manosk/multi-api-k8s:${{steps.vars.outputs.tag}}
-        kubectl set image deployments/ui client=manosk/multi-ui-k8s:${{steps.vars.outputs.tag}}
+        kubectl set image deployments/api api=manosk/multi-api-k8s:${{steps.vars.outputs.tag}}
+        kubectl set image deployments/ui api=manosk/multi-ui-k8s:${{steps.vars.outputs.tag}}
         kubectl get services -o wide
