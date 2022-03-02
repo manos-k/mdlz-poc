@@ -1,11 +1,9 @@
 name: Deploy React app to GKE
 
 on:
-  workflow_run:
-    workflows: Frontend unit tests
-    branches: [master]
-    types: completed
-
+  push:
+    branches:
+      - master
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: kube-cluster
@@ -48,7 +46,7 @@ jobs:
     # Setup gcloud CLI
     - uses: google-github-actions/setup-gcloud@master
       with:
-        service_account_key: ${{ secrets.GKE_SA_KEY }}
+        service_account_key: ${{ secrets.GCP_CREDENTIALS }}
         project_id: ${{ secrets.GKE_PROJECT }}
 
     # Get the GKE credentials so we can deploy to the cluster
