@@ -51,6 +51,7 @@ jobs:
         docker push manosk/multi-api-k8s:latest
         docker push manosk/multi-ui-k8s:${{steps.vars.outputs.tag}}
         docker push manosk/multi-api-k8s:${{steps.vars.outputs.tag}}
+
   setup-and-deploy:
     needs: publish-to-hub
     name: Setup and Deploy to k8s
