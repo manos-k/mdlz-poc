@@ -40,6 +40,11 @@ jobs:
       - name: Get the version
         id: vars
         run: echo ::set-output name=tag::$(echo ${GITHUB_SHA:10})
+      - name: Echo step
+        run: |-
+          echo ls /home/runner/work/mdlz-poc/mdlz-poc
+          echo ls /home/runner/work/mdlz-poc/mdlz-poc/test-api-calls
+          echo lstat /home/runner/work/mdlz-poc/mdlz-poc/test-api-calls/Dockerfile
       - name: Running deploy script
         run: |-
           docker build -t manosk/multi-ui-k8s:latest -t manosk/multi-ui-k8s:${{steps.vars.outputs.tag}} -f ./test-api-calls/Dockerfile ./test-api-calls
