@@ -43,8 +43,10 @@ jobs:
       - name: Echo step 1
         run: ls /home/runner/work/mdlz-poc/mdlz-poc
       - name: Echo step 2
-        run: ls /home/runner/work/mdlz-poc/mdlz-poc/test-api-calls
+        run: ls /home/runner/work/mdlz-poc/mdlz-poc/fast-api
       - name: Echo step 3
+        run: ls /home/runner/work/mdlz-poc/mdlz-poc/test-api-calls
+      - name: Echo step 4
         run: lstat /home/runner/work/mdlz-poc/mdlz-poc/test-api-calls/Dockerfile
       - name: Running deploy script
         run: |-
