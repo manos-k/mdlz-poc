@@ -40,12 +40,6 @@ jobs:
       - name: Get the version
         id: vars
         run: echo ::set-output name=tag::$(echo ${GITHUB_SHA:10})
-      - name: Echo step 1
-        run: ls /home/runner/work/mdlz-poc/mdlz-poc
-      - name: Echo step 2
-        run: ls /home/runner/work/mdlz-poc/mdlz-poc/fast-api
-      - name: Echo step 3
-        run: ls /home/runner/work/mdlz-poc/mdlz-poc/test-api-calls
       - name: Running deploy script
         run: |-
           docker build -t manosk/multi-ui-k8s:latest -t manosk/multi-ui-k8s:${{steps.vars.outputs.tag}} -f ./test-api-calls/Dockerfile ./test-api-calls
@@ -78,6 +72,9 @@ jobs:
           location: ${{ env.GKE_ZONE }}
 
       # Deploy the Docker image to the GKE cluster
+      - name: Get the version
+        id: vars
+        run: echo ::set-output name=tag::$(echo ${GITHUB_SHA:10})
       - name: Deploy
         run: |-
           kubectl apply -f k8s/
