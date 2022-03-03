@@ -46,8 +46,6 @@ jobs:
         run: ls /home/runner/work/mdlz-poc/mdlz-poc/fast-api
       - name: Echo step 3
         run: ls /home/runner/work/mdlz-poc/mdlz-poc/test-api-calls
-      - name: Echo step 4
-        run: lstat /home/runner/work/mdlz-poc/mdlz-poc/test-api-calls/Dockerfile
       - name: Running deploy script
         run: |-
           docker build -t manosk/multi-ui-k8s:latest -t manosk/multi-ui-k8s:${{steps.vars.outputs.tag}} -f ./test-api-calls/Dockerfile ./test-api-calls
