@@ -27,11 +27,6 @@ jobs:
   publish-to-hub:
     name: Publish to dockerhub
     runs-on: ubuntu-latest
-    # environment: production
-
-    # permissions:
-    #   contents: 'read'
-    #   id-token: 'write'
 
     steps:
     - uses: actions/checkout@v2
