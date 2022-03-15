@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { Button } from 'react-bootstrap';
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 function App() {
 	const [apiResponse, setApiResponse] = useState("");
