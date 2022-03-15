@@ -1,8 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { Button } from 'react-bootstrap';
+import { useState } from "react/cjs/react.development";
 
 function App() {
+	const [apiResponse, setApiResponse] = useState("");
 	const triggerFetch = () => {
 		fetch("/api/", {
 			method: 'GET',
@@ -11,7 +13,10 @@ function App() {
 			  }
 		})
 			.then((response) => response.json())
-			.then((json) => console.log(json));
+			.then((json) => {
+				setApiResponse(json)
+				console.log(json)
+			});
 	};
 
 	return (
@@ -22,6 +27,7 @@ function App() {
 				<Button onClick={triggerFetch}>
 					Click to trigget Fetch
 				</Button>
+				<h6>{apiResponse}</h6>
 			</header>
 		</div>
 	);
