@@ -14,8 +14,8 @@ function App() {
 		})
 			.then((response) => response.json())
 			.then((json) => {
-				setApiResponse(json)
 				console.log(json)
+				setApiResponse(JSON.stringify(json))
 			});
 	};
 
