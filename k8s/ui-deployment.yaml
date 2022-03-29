@@ -31,17 +31,17 @@ spec:
             - containerPort: 3000
           resources: {}
           stdin: true
-          volumeMounts:
-            - mountPath: /app/node_modules
-              name: ui-claim0
-            - mountPath: /app
-              name: ui-claim1
+          # volumeMounts:
+          #   - mountPath: /app/node_modules
+          #     name: ui-claim0
+          #   - mountPath: /app
+          #     name: ui-claim1
       restartPolicy: Always
-      volumes:
-        - name: ui-claim0
-          persistentVolumeClaim:
-            claimName: ui-claim0
-        - name: ui-claim1
-          persistentVolumeClaim:
-            claimName: ui-claim1
+      # volumes:
+      #   - name: ui-claim0
+      #     persistentVolumeClaim:
+      #       claimName: ui-claim0
+      #   - name: ui-claim1
+      #     persistentVolumeClaim:
+      #       claimName: ui-claim1
 status: {}
