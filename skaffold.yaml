@@ -1,0 +1,39 @@
+apiVersion: skaffold/v2beta11
+kind: Config
+metadata:
+  name: mondelez-poc
+build:
+  # local:
+  #   push: false
+  artifacts:
+  - image: api
+    context: fast-api
+    docker:
+      dockerfile: Dockerfile
+    sync:
+      manual:
+        - src: "app/*.py"
+          dest: .
+  - image: ui
+    context: test-api-calls
+    docker:
+      dockerfile: Dockerfile.dev
+    sync:
+      manual:
+        - src: "src/**/*.js"
+          dest: .
+        - src: "src/**/*.css"
+          dest: .
+        - src: "src/**/*.html"
+          dest: .
+deploy:
+  kubectl:
+    manifests:
+    - k8s/ingress-service.yaml
+    - k8s/api-claim0-persistentvolumeclaim.yaml
+    - k8s/api-deployment.yaml
+    - k8s/api-service.yaml
+    # - k8s/ui-claim0-persistentvolumeclaim.yaml
+    # - k8s/ui-claim1-persistentvolumeclaim.yaml
+    - k8s/ui-deployment.yaml
+    - k8s/ui-service.yaml

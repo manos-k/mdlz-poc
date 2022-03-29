@@ -4,6 +4,7 @@ services:
     stdin_open: true
     build:
       context: ./test-api-calls
+      dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
       - ./test-api-calls:/app
